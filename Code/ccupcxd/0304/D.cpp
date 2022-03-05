@@ -9,22 +9,50 @@ using namespace std;
 typedef long long ll;
 
 #define MiruSort ios_base::sync_with_stdio(0); cin.tie(0);
+const int N = 1000010;
+bool notprime[N + 5];
+set<ll> prime;
 
-bool sol(ll n)
+void linear_sieve()
 {
-    if(n < 4)
-        return n == 2 || n == 3;
-    for(ll i = 2; i * i <= n; ++i)
-        if(n % i == 0)
-            return false;
-    return true;
+    for(int i = 2; i <= N; ++i)
+    {
+        if(!notprime[i]) 
+            prime.insert(i);
+        for(auto p1 : prime)
+        {
+            if(p1 * i > N)
+                break; 
+            notprime[p1 * i] = true;
+            if(i % p1 == 0)
+                break;
+        }
+    }
 }
-
 signed main()
 {
     MiruSort
     ll n;
+    linear_sieve();
     while(cin >> n)
-    	(sol(n)) ? cout << "isprime\n" : cout << "oh no\n";
+    {
+        if(n <= 1000000)
+    	    (prime.find(n) != prime.end()) ? cout << "isprime\n" : cout << "oh no\n";
+        else
+        {
+            int flag = 1;
+            for(auto i: prime)
+            {
+                if(n % i == 0)
+                {
+                    cout << "oh no\n";
+                    flag--;
+                    break;
+                }
+            }
+            if(flag)
+                cout << "isprime\n";
+        }
+    }
     return 0;
 }
