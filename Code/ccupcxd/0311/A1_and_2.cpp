@@ -25,30 +25,29 @@ const ld eps = 1e-4;
 ll _gcd(ll a, ll b, ll* x, ll* y) // 擴展歐基里德算法
 {
     if(a == 0)
-	{
-		*x = 0, *y = 1;
-		return b;
-	}
+    {
+        *x = 0, *y = 1;
+        return b;
+    }
     ll x1, y1;
-	ll gcd = _gcd(b % a, a, &x1, &y1);
-	*x = y1 - (b / a) * x1;
-	*y = x1;
-	return gcd;
+    ll gcd = _gcd(b % a, a, &x1, &y1);
+    *x = y1 - (b / a) * x1;
+    *y = x1;
+    return gcd;
 }
 
 void modInverse(ll a, ll m)
 {
-	ll x, y;
-	ll g = _gcd(a, m, &x, &y);
-	ll res = (x % m + m) % m;
-	cout << res;
+    ll x, y;
+    ll g = _gcd(a, m, &x, &y);
+    ll res = (x % m + m) % m;
+    cout << res;
 }
 
 int main()
 {
-	ll a, m;
+    ll a, m;
     cin >> a >> m;
-	modInverse(a, m);
-	return 0;
+    modInverse(a, m);
+    return 0;
 }
-
