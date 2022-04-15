@@ -21,6 +21,7 @@ typedef unsigned long long ull;
 
 const ld pi = atan2(0, -1);
 const ld eps = 1e-4;
+const ll INF = 1e18;
 const int vertex = 505;
 
 ll dist[vertex][vertex];
@@ -33,7 +34,7 @@ void sol()
     for(int i = 0; i <= n; i++)
     {
         for(int j = 0; j <= n; j++)
-            dist[i][j] = 1e18;
+            dist[i][j] = INF;
         dist[i][i] = 0;
     }
     while(m--)
@@ -52,7 +53,7 @@ void sol()
     {
         cin >> a >> b;
         a--, b--;
-        (dist[a][b] == 1e18) ? cout << "-1\n" : cout << dist[a][b] << '\n';
+        (dist[a][b] == INF) ? cout << "-1\n" : cout << dist[a][b] << '\n';
     }
 }
 

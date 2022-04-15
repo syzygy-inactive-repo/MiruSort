@@ -45,10 +45,8 @@ void dijkstra(int s)
             continue;
         dis[node.v] = node.w;
         for(auto k: Graph[node.v])
-        {
             if(dis[k.v] == -1)
                 pq.push({k.v, node.w + k.w});
-        }
     }
 }
 
