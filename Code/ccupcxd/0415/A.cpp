@@ -52,7 +52,7 @@ void dijkstra(int s)
 
 void sol()
 {
-	int n, m;
+    int n, m;
     int u, v, w;
     cin >> n >> m;
     while(m--)

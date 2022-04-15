@@ -52,7 +52,7 @@ bool negative_cycle()
 
 void sol()
 {
-	int m;
+    int m;
     cin >> n >> m;
     int u, v, w;
     while(m--)

@@ -28,7 +28,7 @@ ll dist[vertex][vertex];
 
 void sol()
 {
-	int n, m, q;
+    int n, m, q;
     ll u, v, w;
     cin >> n >> m >> q;
     for(int i = 0; i <= n; i++)
