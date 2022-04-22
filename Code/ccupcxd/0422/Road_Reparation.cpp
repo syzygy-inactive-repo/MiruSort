@@ -38,9 +38,7 @@ class DSU
         DSU(int size)
         {
             this->size = size;
-            p.resize(size + 1);
-            for(int i = 0; i <= size; ++i)
-                p[i] = -1;
+            p.assign(size + 1, -1);
         }
         int Find(int x)
         {    
@@ -78,9 +76,9 @@ void kruskal(int n)
         }
     }
     if(!roads)
-		cout << weight << "\n";
-	else
-		cout << "IMPOSSIBLE\n";
+        cout << weight << "\n";
+    else
+        cout << "IMPOSSIBLE\n";
 }
 
 void sol()
