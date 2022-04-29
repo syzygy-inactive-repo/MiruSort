@@ -27,12 +27,35 @@ void sol()
     int n, m;
     cin >> n >> m;
     vector<int> v(n), w(n), dp(m + 1, 0);
+    bool p[n + 1][m + 1];
+    memset(p, false, sizeof(p));
     for(int i = 0; i < n; ++i)
         cin >> w[i] >> v[i];
     for(int i = 0; i < n; ++i)
+    {
         for(int j = m; j >= w[i]; --j)
-            dp[j] = max(dp[j], dp[j - w[i]] + v[i]);
+        {
+            if(dp[j] < dp[j - w[i]] + v[i])
+            {
+                dp[j] = dp[j - w[i]] + v[i];
+                p[i][j] = true;
+            }
+        }
+    }
     cout << dp[m] << '\n';
+    vector<int> record;
+    for(int i = n - 1, j = m; i >= 0; --i)
+    {
+        if(p[i][j])
+        {
+            record.push_back(i);
+            j -= w[i];
+        }
+    }
+    sort(all(record));
+    cout << record.size() << '\n';
+    for(int idx: record)
+        cout << idx << " ";
 }
 
 signed main()
